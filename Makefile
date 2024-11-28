@@ -6,4 +6,5 @@ program:
 		src/*.java \
 		src/ui/*.java \
 		src/ui/panels/*.java \
+		src/ui/mycolors/*.java \
 		src/game/patterns/*.java

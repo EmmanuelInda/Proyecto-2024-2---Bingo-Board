@@ -2,8 +2,11 @@ package game.patterns;
 
 import java.util.ArrayList;
 
-public class Patterns {
-	public ArrayList<int[][]> getFiveInARowPatterns() {
+public class Pattern {
+	public Pattern() {
+	}
+
+	public static ArrayList<int[][]> getFiveInARowPatterns() {
 		ArrayList<int[][]> patterns = new ArrayList<>();
 
 		patterns.add(pattern1);
@@ -22,7 +25,7 @@ public class Patterns {
 		return patterns;
 	}
 
-	public ArrayList<int[][]> getSixPackPatterns() {
+	public static ArrayList<int[][]> getSixPackPatterns() {
 		ArrayList<int[][]> patterns = new ArrayList<>();
 
 		patterns.add(pattern13);
@@ -53,7 +56,7 @@ public class Patterns {
 		return patterns;
 	}
 
-	public ArrayList<int[][]> getEightPatterns() {
+	public static ArrayList<int[][]> getEightPatterns() {
 		ArrayList<int[][]> patterns = new ArrayList<>();
 
 		patterns.add(pattern37);
@@ -65,7 +68,7 @@ public class Patterns {
 	/*
 	 *	5-in-a-Row Patterns
 	 */
-	public int[][] pattern1 = {
+	private static int[][] pattern1 = {
 		{1, 0, 0, 0, 0},
 		{1, 0, 0, 0, 0},
 		{1, 0, 0, 0, 0},
@@ -73,7 +76,7 @@ public class Patterns {
 		{1, 0, 0, 0, 0}
 	};
 
-	public int[][] pattern2 = {
+	private static int[][] pattern2 = {
 		{0, 1, 0, 0, 0},
 		{0, 1, 0, 0, 0},
 		{0, 1, 0, 0, 0},
@@ -81,7 +84,7 @@ public class Patterns {
 		{0, 1, 0, 0, 0}
 	};
 
-	public int[][] pattern3 = {
+	private static int[][] pattern3 = {
 		{0, 0, 1, 0, 0},
 		{0, 0, 1, 0, 0},
 		{0, 0, 1, 0, 0},
@@ -89,7 +92,7 @@ public class Patterns {
 		{0, 0, 1, 0, 0}
 	};
 
-	public int[][] pattern4 = {
+	private static int[][] pattern4 = {
 		{0, 0, 0, 1, 0},
 		{0, 0, 0, 1, 0},
 		{0, 0, 0, 1, 0},
@@ -97,7 +100,7 @@ public class Patterns {
 		{0, 0, 0, 1, 0}
 	};
 
-	public int[][] pattern5 = {
+	private static int[][] pattern5 = {
 		{0, 0, 0, 0, 1},
 		{0, 0, 0, 0, 1},
 		{0, 0, 0, 0, 1},
@@ -105,7 +108,7 @@ public class Patterns {
 		{0, 0, 0, 0, 1}
 	};
 
-	public int[][] pattern6 = {
+	private static int[][] pattern6 = {
 		{1, 0, 0, 0, 0},
 		{0, 1, 0, 0, 0},
 		{0, 0, 1, 0, 0},
@@ -113,7 +116,7 @@ public class Patterns {
 		{0, 0, 0, 0, 1}
 	};
 
-	public int[][] pattern7 = {
+	private static int[][] pattern7 = {
 		{1, 1, 1, 1, 1},
 		{0, 0, 0, 0, 0},
 		{0, 0, 0, 0, 0},
@@ -121,7 +124,7 @@ public class Patterns {
 		{0, 0, 0, 0, 0}
 	};
 
-	public int[][] pattern8 = {
+	private static int[][] pattern8 = {
 		{0, 0, 0, 0, 0},
 		{1, 1, 1, 1, 1},
 		{0, 0, 0, 0, 0},
@@ -129,7 +132,7 @@ public class Patterns {
 		{0, 0, 0, 0, 0}
 	};
 
-	public int[][] pattern9 = {
+	private static int[][] pattern9 = {
 		{0, 0, 0, 0, 0},
 		{0, 0, 0, 0, 0},
 		{1, 1, 1, 1, 1},
@@ -137,7 +140,7 @@ public class Patterns {
 		{0, 0, 0, 0, 0}
 	};
 
-	public int[][] pattern10 = {
+	private static int[][] pattern10 = {
 		{0, 0, 0, 0, 0},
 		{0, 0, 0, 0, 0},
 		{0, 0, 0, 0, 0},
@@ -145,7 +148,7 @@ public class Patterns {
 		{0, 0, 0, 0, 0}
 	};
 
-	public int[][] pattern11 = {
+	private static int[][] pattern11 = {
 		{0, 0, 0, 0, 0},
 		{0, 0, 0, 0, 0},
 		{0, 0, 0, 0, 0},
@@ -153,7 +156,7 @@ public class Patterns {
 		{1, 1, 1, 1, 1}
 	};
 
-	public int[][] pattern12 = {
+	private static int[][] pattern12 = {
 		{0, 0, 0, 0, 1},
 		{0, 0, 0, 1, 0},
 		{0, 0, 1, 0, 0},
@@ -164,7 +167,7 @@ public class Patterns {
 	/*
 	 *	6-Pack Patterns
 	 */
-	public int[][] pattern13 = {
+	private static int[][] pattern13 = {
 		{1, 1, 0, 0, 0},
 		{1, 1, 0, 0, 0},
 		{1, 1, 0, 0, 0},
@@ -172,7 +175,7 @@ public class Patterns {
 		{0, 0, 0, 0, 0}
 	};
 
-	public int[][] pattern14 = {
+	private static int[][] pattern14 = {
 		{0, 0, 0, 0, 0},
 		{1, 1, 0, 0, 0},
 		{1, 1, 0, 0, 0},
@@ -180,7 +183,7 @@ public class Patterns {
 		{0, 0, 0, 0, 0}
 	};
 
-	public int[][] pattern15 = {
+	private static int[][] pattern15 = {
 		{0, 0, 0, 0, 0},
 		{0, 0, 0, 0, 0},
 		{1, 1, 0, 0, 0},
@@ -188,7 +191,7 @@ public class Patterns {
 		{1, 1, 0, 0, 0}
 	};
 
-	public int[][] pattern16 = {
+	private static int[][] pattern16 = {
 		{0, 1, 1, 0, 0},
 		{0, 1, 1, 0, 0},
 		{0, 1, 1, 0, 0},
@@ -196,7 +199,7 @@ public class Patterns {
 		{0, 0, 0, 0, 0}
 	};
 
-	public int[][] pattern17 = {
+	private static int[][] pattern17 = {
 		{0, 0, 0, 0, 0},
 		{0, 1, 1, 0, 0},
 		{0, 1, 1, 0, 0},
@@ -204,7 +207,7 @@ public class Patterns {
 		{0, 0, 0, 0, 0}
 	};
 
-	public int[][] pattern18 = {
+	private static int[][] pattern18 = {
 		{0, 0, 0, 0, 0},
 		{0, 0, 0, 0, 0},
 		{0, 1, 1, 0, 0},
@@ -212,7 +215,7 @@ public class Patterns {
 		{0, 1, 1, 0, 0}
 	};
 
-	public int[][] pattern19 = {
+	private static int[][] pattern19 = {
 		{0, 0, 1, 1, 0},
 		{0, 0, 1, 1, 0},
 		{0, 0, 1, 1, 0},
@@ -220,7 +223,7 @@ public class Patterns {
 		{0, 0, 0, 0, 0}
 	};
 
-	public int[][] pattern20 = {
+	private static int[][] pattern20 = {
 		{0, 0, 0, 0, 0},
 		{0, 0, 1, 1, 0},
 		{0, 0, 1, 1, 0},
@@ -228,7 +231,7 @@ public class Patterns {
 		{0, 0, 0, 0, 0}
 	};
 
-	public int[][] pattern21 = {
+	private static int[][] pattern21 = {
 		{0, 0, 0, 0, 0},
 		{0, 0, 0, 0, 0},
 		{0, 0, 1, 1, 0},
@@ -236,7 +239,7 @@ public class Patterns {
 		{0, 0, 1, 1, 0}
 	};
 
-	public int[][] pattern22 = {
+	private static int[][] pattern22 = {
 		{0, 0, 0, 1, 1},
 		{0, 0, 0, 1, 1},
 		{0, 0, 0, 1, 1},
@@ -244,7 +247,7 @@ public class Patterns {
 		{0, 0, 0, 0, 0}
 	};
 
-	public int[][] pattern23 = {
+	private static int[][] pattern23 = {
 		{0, 0, 0, 0, 0},
 		{0, 0, 0, 1, 1},
 		{0, 0, 0, 1, 1},
@@ -252,7 +255,7 @@ public class Patterns {
 		{0, 0, 0, 0, 0}
 	};
 
-	public int[][] pattern24 = {
+	private static int[][] pattern24 = {
 		{0, 0, 0, 0, 0},
 		{0, 0, 0, 0, 0},
 		{0, 0, 0, 1, 1},
@@ -260,7 +263,7 @@ public class Patterns {
 		{0, 0, 0, 1, 1}
 	};
 
-	public int[][] pattern25 = {
+	private static int[][] pattern25 = {
 		{1, 1, 1, 0, 0},
 		{1, 1, 1, 0, 0},
 		{0, 0, 0, 0, 0},
@@ -268,7 +271,7 @@ public class Patterns {
 		{0, 0, 0, 0, 0}
 	};
 
-	public int[][] pattern26 = {
+	private static int[][] pattern26 = {
 		{0, 1, 1, 1, 0},
 		{0, 1, 1, 1, 0},
 		{0, 0, 0, 0, 0},
@@ -276,7 +279,7 @@ public class Patterns {
 		{0, 0, 0, 0, 0}
 	};
 
-	public int[][] pattern27 = {
+	private static int[][] pattern27 = {
 		{0, 0, 1, 1, 1},
 		{0, 0, 1, 1, 1},
 		{0, 0, 0, 0, 0},
@@ -284,7 +287,7 @@ public class Patterns {
 		{0, 0, 0, 0, 0}
 	};
 
-	public int[][] pattern28 = {
+	private static int[][] pattern28 = {
 		{0, 0, 0, 0, 0},
 		{1, 1, 1, 0, 0},
 		{1, 1, 1, 0, 0},
@@ -292,7 +295,7 @@ public class Patterns {
 		{0, 0, 0, 0, 0}
 	};
 
-	public int[][] pattern29 = {
+	private static int[][] pattern29 = {
 		{0, 0, 0, 0, 0},
 		{0, 1, 1, 1, 0},
 		{0, 1, 1, 1, 0},
@@ -300,7 +303,7 @@ public class Patterns {
 		{0, 0, 0, 0, 0}
 	};
 
-	public int[][] pattern30 = {
+	private static int[][] pattern30 = {
 		{0, 0, 0, 0, 0},
 		{0, 0, 1, 1, 1},
 		{0, 0, 1, 1, 1},
@@ -308,7 +311,7 @@ public class Patterns {
 		{0, 0, 0, 0, 0}
 	};
 
-	public int[][] pattern31 = {
+	private static int[][] pattern31 = {
 		{0, 0, 0, 0, 0},
 		{0, 0, 0, 0, 0},
 		{1, 1, 1, 0, 0},
@@ -316,7 +319,7 @@ public class Patterns {
 		{0, 0, 0, 0, 0}
 	};
 
-	public int[][] pattern32 = {
+	private static int[][] pattern32 = {
 		{0, 0, 0, 0, 0},
 		{0, 0, 0, 0, 0},
 		{0, 1, 1, 1, 0},
@@ -324,7 +327,7 @@ public class Patterns {
 		{0, 0, 0, 0, 0}
 	};
 
-	public int[][] pattern33 = {
+	private static int[][] pattern33 = {
 		{0, 0, 0, 0, 0},
 		{0, 0, 0, 0, 0},
 		{0, 0, 1, 1, 1},
@@ -332,7 +335,7 @@ public class Patterns {
 		{0, 0, 0, 0, 0}
 	};
 
-	public int[][] pattern34 = {
+	private static int[][] pattern34 = {
 		{0, 0, 0, 0, 0},
 		{0, 0, 0, 0, 0},
 		{0, 0, 0, 0, 0},
@@ -340,7 +343,7 @@ public class Patterns {
 		{1, 1, 1, 0, 0}
 	};
 
-	public int[][] pattern35 = {
+	private static int[][] pattern35 = {
 		{0, 0, 0, 0, 0},
 		{0, 0, 0, 0, 0},
 		{0, 0, 0, 0, 0},
@@ -348,7 +351,7 @@ public class Patterns {
 		{0, 1, 1, 1, 0}
 	};
 
-	public int[][] pattern36 = {
+	private static int[][] pattern36 = {
 		{0, 0, 0, 0, 0},
 		{0, 0, 0, 0, 0},
 		{0, 0, 0, 0, 0},
@@ -359,7 +362,7 @@ public class Patterns {
 	/*
 	 *	8 Diamond Pattern
 	 */
-	public int[][] pattern37 = {
+	private static int[][] pattern37 = {
 		{0, 0, 1, 0, 0},
 		{0, 1, 0, 1, 0},
 		{1, 0, 0, 0, 1},
@@ -370,7 +373,7 @@ public class Patterns {
 	/*
 	 *	8 Small Center Box Pattern
 	 */
-	public int[][] pattern38 = {
+	private static int[][] pattern38 = {
 		{0, 0, 0, 0, 0},
 		{0, 1, 1, 1, 0},
 		{0, 1, 0, 1, 0},
@@ -378,4 +381,3 @@ public class Patterns {
 		{0, 0, 0, 0, 0}
 	};
 }
-
