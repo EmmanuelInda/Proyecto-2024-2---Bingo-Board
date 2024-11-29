@@ -10,9 +10,9 @@ import javax.swing.*;
 import java.awt.*;
 
 public class SetupFrame extends JFrame {
-	JPanel pnl_header;
-	JPanel pnl_options;
-	JPanel pnl_patterns;
+	JPanel pnlHeader;
+	JPanel pnlOptions;
+	JPanel pnlPatterns;
 
 	int currentPattern[][];
 
@@ -34,68 +34,68 @@ public class SetupFrame extends JFrame {
 	}
 
 	private void setHeader() {
-		pnl_header = new JPanel();
-		pnl_header.setBackground(MyColor.BLUE);
+		pnlHeader = new JPanel();
+		pnlHeader.setBackground(MyColor.BLUE);
 
-		JLabel lbl_header = new JLabel("Bingo");
-		lbl_header.setForeground(Color.WHITE);
-		lbl_header.setFont(new Font("Arial", Font.BOLD, 36));
-		pnl_header.add(lbl_header);
+		JLabel lblHeader = new JLabel("Bingo");
+		lblHeader.setForeground(Color.WHITE);
+		lblHeader.setFont(new Font("Arial", Font.BOLD, 36));
+		pnlHeader.add(lblHeader);
 
-		add(pnl_header, BorderLayout.NORTH);
+		add(pnlHeader, BorderLayout.NORTH);
 	}
 
 	private void setOptions() {
-		pnl_options = new JPanel();
-		pnl_options.setPreferredSize(new Dimension(200, 768));
-		pnl_options.setLayout(new BoxLayout(pnl_options, BoxLayout.Y_AXIS));
-		pnl_options.setBorder(BorderFactory.createEmptyBorder(10, 10, 10, 10));
+		pnlOptions = new JPanel();
+		pnlOptions.setPreferredSize(new Dimension(200, 768));
+		pnlOptions.setLayout(new BoxLayout(pnlOptions, BoxLayout.Y_AXIS));
+		pnlOptions.setBorder(BorderFactory.createEmptyBorder(10, 10, 10, 10));
 
-		JLabel lbl_side = new JLabel("Menu");
-		lbl_side.setFont(new Font("Arial", Font.BOLD, 18));
-		lbl_side.setAlignmentX(Component.CENTER_ALIGNMENT);
-		pnl_options.add(lbl_side);
+		JLabel lblSide = new JLabel("Menu");
+		lblSide.setFont(new Font("Arial", Font.BOLD, 18));
+		lblSide.setAlignmentX(Component.CENTER_ALIGNMENT);
+		pnlOptions.add(lblSide);
 
-		JButton button = new JButton("Start");
-		button.setAlignmentX(Component.CENTER_ALIGNMENT);
+		JButton btnStart = new JButton("Start");
+		btnStart.setAlignmentX(Component.CENTER_ALIGNMENT);
 
-		button.addActionListener(e -> {	
+		btnStart.addActionListener(e -> {	
 			if (currentPattern == null || currentPattern.length == 0) {
 				JOptionPane.showMessageDialog(this, "Please select a valid pattern before starting the game.", "Error", JOptionPane.ERROR_MESSAGE);
 			} else {
-				new BingoBoard(new Game(currentPattern), new History());
+				new CardUI(new Game(currentPattern), new HistoryUI());
 				this.dispose();
 			}
 		});
 	
-		pnl_options.add(button);
+		pnlOptions.add(btnStart);
 
-		JPanel pnl_placeholder = new JPanel();
-		pnl_placeholder.setPreferredSize(new Dimension(180, 300));
-		pnl_placeholder.setAlignmentX(Component.CENTER_ALIGNMENT);
-		pnl_options.add(pnl_placeholder);
+		JPanel pnlPlaceHolder = new JPanel();
+		pnlPlaceHolder.setPreferredSize(new Dimension(180, 300));
+		pnlPlaceHolder.setAlignmentX(Component.CENTER_ALIGNMENT);
+		pnlOptions.add(pnlPlaceHolder);
 		
 		JLabel lbl_selectGrid = new JLabel("Selected grid");
 		lbl_selectGrid.setAlignmentX(Component.CENTER_ALIGNMENT);
-		pnl_options.add(lbl_selectGrid);
+		pnlOptions.add(lbl_selectGrid);
 
-		JPanel pnl_preview = PatternGrid.createPatternGrid(null);
-		pnl_preview.setPreferredSize(new Dimension(180, 80));
-		pnl_preview.setAlignmentX(Component.CENTER_ALIGNMENT);
-		pnl_options.add(pnl_preview);
+		JPanel pnlPreview = PatternGrid.createPatternGrid(null);
+		pnlPreview.setPreferredSize(new Dimension(180, 80));
+		pnlPreview.setAlignmentX(Component.CENTER_ALIGNMENT);
+		pnlOptions.add(pnlPreview);
 
-		add(pnl_options, BorderLayout.WEST);
+		add(pnlOptions, BorderLayout.WEST);
 	}
 
 	public void updatePreview(int[][] pattern) {
-		JPanel pnl_preview = PatternGrid.createPatternGrid(pattern);
+		JPanel pnlPreview = PatternGrid.createPatternGrid(pattern);
 
-		pnl_preview.setPreferredSize(new Dimension(180, 80));
-		pnl_preview.setAlignmentX(Component.CENTER_ALIGNMENT);
-		pnl_options.remove(4);
-		pnl_options.add(pnl_preview, 4);
-		pnl_options.revalidate();
-		pnl_options.repaint();
+		pnlPreview.setPreferredSize(new Dimension(180, 80));
+		pnlPreview.setAlignmentX(Component.CENTER_ALIGNMENT);
+		pnlOptions.remove(4);
+		pnlOptions.add(pnlPreview, 4);
+		pnlOptions.revalidate();
+		pnlOptions.repaint();
 	}
 
 	public void setCurrentPattern(int[][] currentPattern) {
@@ -104,7 +104,7 @@ public class SetupFrame extends JFrame {
 
 	private void setPatterns() {
 		currentPattern = null;
-		pnl_patterns = new PatternPanel(this);
-		add(pnl_patterns, BorderLayout.CENTER);
+		pnlPatterns = new PatternPanel(this);
+		add(pnlPatterns, BorderLayout.CENTER);
 	}
 }

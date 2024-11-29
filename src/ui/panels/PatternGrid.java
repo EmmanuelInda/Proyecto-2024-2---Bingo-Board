@@ -9,28 +9,28 @@ import java.awt.*;
 public class PatternGrid extends JPanel {
 	public static JPanel createPatternGrid(int[][] pattern) {
 		if (pattern == null) {
-			JPanel pnl_null = new JPanel();
+			JPanel pnlNull = new JPanel();
 			
-			pnl_null.setBorder(new LineBorder(Color.BLACK, 1));
-			pnl_null.add(new JLabel("null"));
+			pnlNull.setBorder(new LineBorder(Color.BLACK, 1));
+			pnlNull.add(new JLabel("null"));
 
-			return pnl_null;
+			return pnlNull;
 		}
 
-		JPanel gridPanel = new JPanel();
-		gridPanel.setLayout(new GridLayout(pattern.length, pattern[0].length));
+		JPanel pnlGrids = new JPanel();
+		pnlGrids.setLayout(new GridLayout(pattern.length, pattern[0].length));
 
 		for (int[] row : pattern) {
 			for (int cell : row) {
-				JLabel cellLabel = new JLabel();
+				JLabel lblCell = new JLabel();
 
-				cellLabel.setOpaque(true);
-				cellLabel.setBackground(cell == 1 ? MyColor.BLUE : Color.WHITE);
-				cellLabel.setBorder(BorderFactory.createLineBorder(Color.BLACK));
-				gridPanel.add(cellLabel);
+				lblCell.setOpaque(true);
+				lblCell.setBackground(cell == 1 ? MyColor.BLUE : Color.WHITE);
+				lblCell.setBorder(BorderFactory.createLineBorder(Color.BLACK));
+				pnlGrids.add(lblCell);
 			}
 		}
 
-		return gridPanel;
+		return pnlGrids;
 	}
 }

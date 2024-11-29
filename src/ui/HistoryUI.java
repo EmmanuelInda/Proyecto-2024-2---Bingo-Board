@@ -3,55 +3,55 @@ package ui;
 import javax.swing.*;
 import java.awt.*;
 
-public class History extends JFrame {
+public class HistoryUI extends JFrame {
 	private static final int MAX_NUMBER = 75;
 	private static final int ROWS = 5;
 	private static final int COLUMNS = 15;
 
-	private JPanel pnl_main;
-	private JLabel[][] lbl_cells;
+	private JPanel pnlMain;
+	private JLabel[][] lblCells;
 
-	public History() {
+	public HistoryUI() {
 		this.setTitle("Bingo History");
 		this.setSize(800, 400);
 		this.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		this.setLayout(new BorderLayout());
 
-		this.pnl_main = new JPanel(new GridLayout(ROWS, COLUMNS));
+		this.pnlMain = new JPanel(new GridLayout(ROWS, COLUMNS));
 		this.getContentPane().setBackground(Color.WHITE);
 
-		initializeGrid(pnl_main);
-		this.add(pnl_main, BorderLayout.CENTER);
+		initializeGrid(pnlMain);
+		this.add(pnlMain, BorderLayout.CENTER);
 
 		initializeBingoHeaders();
 
 		this.setVisible(true);
 	}
 
-	private void initializeGrid(JPanel pnl_main) {
-		lbl_cells = new JLabel[ROWS][COLUMNS];
+	private void initializeGrid(JPanel pnlMain) {
+		lblCells = new JLabel[ROWS][COLUMNS];
 		int number = 1;
 
 		for (int row = 0; row < ROWS; ++row) {
 			for (int col = 0; col < COLUMNS; ++col) {
-				JLabel cell = new JLabel(String.valueOf(number));
+				JLabel lblCell = new JLabel(String.valueOf(number));
 
-				cell.setHorizontalAlignment(SwingConstants.CENTER);
-				cell.setFont(new Font("Arial", Font.BOLD, 20));
-				cell.setOpaque(true);
-				cell.setBackground(Color.WHITE);
-				cell.setForeground(Color.BLACK);
-				cell.setBorder(BorderFactory.createLineBorder(Color.GRAY));
-				lbl_cells[row][col] = cell;
+				lblCell.setHorizontalAlignment(SwingConstants.CENTER);
+				lblCell.setFont(new Font("Arial", Font.BOLD, 20));
+				lblCell.setOpaque(true);
+				lblCell.setBackground(Color.WHITE);
+				lblCell.setForeground(Color.BLACK);
+				lblCell.setBorder(BorderFactory.createLineBorder(Color.GRAY));
+				lblCells[row][col] = lblCell;
 
-				pnl_main.add(cell);
+				pnlMain.add(lblCell);
 				number++;
 			}
 		}
 	}
 
 	private void initializeBingoHeaders() {
-		JPanel headerPanel = new JPanel(new GridLayout(5, 1));
+		JPanel pnlHeader = new JPanel(new GridLayout(5, 1));
 		String[] headers = {"B", "I", "N", "G", "O"};
 		Color[] colors = {Color.BLUE, Color.RED, Color.GREEN, Color.YELLOW, new Color(128, 0, 128)};
 	
@@ -64,9 +64,9 @@ public class History extends JFrame {
 			lblHeader.setForeground(Color.WHITE);
 			lblHeader.setBorder(BorderFactory.createLineBorder(Color.GRAY));
 	
-			headerPanel.add(lblHeader);
+			pnlHeader.add(lblHeader);
 		}
-		this.add(headerPanel, BorderLayout.WEST);
+		this.add(pnlHeader, BorderLayout.WEST);
 	}
 	
 
@@ -76,10 +76,10 @@ public class History extends JFrame {
 		int row = (number - 1) / COLUMNS;
 		int col = (number - 1) % COLUMNS;
 
-		JLabel cell = lbl_cells[row][col];
+		JLabel lblCell = lblCells[row][col];
 
-		cell.setBackground(Color.YELLOW);
-		cell.setOpaque(true);
-		cell.repaint();
+		lblCell.setBackground(Color.YELLOW);
+		lblCell.setOpaque(true);
+		lblCell.repaint();
 	}
 }

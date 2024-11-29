@@ -1,17 +1,26 @@
 package game;
 
-import java.util.ArrayList;
-
 public class Game {
 	private int[][] pattern;
-	private boolean winGame;
+	private PlayerCard playerCard;
+	private Drum drum;
 
 	public Game(int[][] pattern) {
 		this.pattern = pattern;
-		this.winGame = false;
+		this.playerCard = new PlayerCard();
+		this.drum = new Drum();
 	}
 
-	public boolean isWinGame(int[][] currentBoard) {
+	public PlayerCard getPlayerCard() {
+		return playerCard;
+	}
+
+	public Drum getDrum() {
+		return drum;
+	}
+
+	public boolean isWinGame() {
+		int[][] currentBoard = playerCard.getFilledPattern();
 		if (currentBoard == null || pattern.length != currentBoard.length || pattern[0].length != currentBoard[0].length) {
 			return false;
 		}

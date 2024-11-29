@@ -1,6 +1,6 @@
 package ui.panels;
 
-import game.patterns.Pattern;
+import game.patterns.*;
 
 import javax.swing.*;
 import java.awt.*;
@@ -11,20 +11,20 @@ import ui.SetupFrame;
 
 public class PatternPanel extends JPanel {
 	private SetupFrame parentFrame;
-	private JTabbedPane tab_grids;
+	private JTabbedPane tabGrids;
 
 	public PatternPanel(SetupFrame parentFrame) {
 		this.parentFrame = parentFrame;
 
 		this.setLayout(new BorderLayout());
 
-		this.tab_grids = new JTabbedPane();
+		this.tabGrids = new JTabbedPane();
 
-		this.tab_grids.addTab("5-in-a-Row", createPatternPanel(Pattern.getFiveInARowPatterns()));
-		this.tab_grids.addTab("6-Pack", createPatternPanel(Pattern.getSixPackPatterns()));
-		this.tab_grids.addTab("8 Patterns", createPatternPanel(Pattern.getEightPatterns()));
+		this.tabGrids.addTab("5-in-a-Row", createPatternPanel(FiveInARowPattern.getPatterns()));
+		this.tabGrids.addTab("6-Pack", createPatternPanel(SixPackPattern.getPatterns()));
+		this.tabGrids.addTab("8 Patterns", createPatternPanel(EightPattern.getPatterns()));
 
-		this.add(tab_grids, BorderLayout.CENTER);
+		this.add(tabGrids, BorderLayout.CENTER);
 	}
 
 	private JPanel createPatternPanel(ArrayList<int[][]> patterns) {
@@ -44,18 +44,18 @@ public class PatternPanel extends JPanel {
 
 			patternGrid.setPreferredSize(new Dimension(120, 120));
 
-			JPanel wrapper = new JPanel(new FlowLayout(FlowLayout.CENTER, 0, 20));
-			wrapper.setMaximumSize(new Dimension(120, 120));
-			wrapper.setPreferredSize(new Dimension(120, 120));
+			JPanel pnlWrapper = new JPanel(new FlowLayout(FlowLayout.CENTER, 0, 20));
+			pnlWrapper.setMaximumSize(new Dimension(120, 120));
+			pnlWrapper.setPreferredSize(new Dimension(120, 120));
 
-			wrapper.add(patternGrid);
-			panel.add(wrapper);
+			pnlWrapper.add(patternGrid);
+			panel.add(pnlWrapper);
 		}
 
-		JPanel outerPanel = new JPanel(new BorderLayout());
-		outerPanel.setBorder(BorderFactory.createEmptyBorder(0, 0, 0, 0));
-		outerPanel.add(panel, BorderLayout.CENTER);
+		JPanel pnlOuter = new JPanel(new BorderLayout());
+		pnlOuter.setBorder(BorderFactory.createEmptyBorder(0, 0, 0, 0));
+		pnlOuter.add(panel, BorderLayout.CENTER);
 
-		return outerPanel;
+		return pnlOuter;
 	}
 }
