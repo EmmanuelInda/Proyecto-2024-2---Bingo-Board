@@ -9,12 +9,12 @@ import java.awt.*;
 public class PatternGrid extends JPanel {
 	public static JPanel createPatternGrid(int[][] pattern) {
 		if (pattern == null) {
-			JPanel nullPanel = new JPanel();
+			JPanel pnl_null = new JPanel();
 			
-			nullPanel.setBorder(new LineBorder(Color.BLACK, 1));
-			nullPanel.add(new JLabel("null"));
+			pnl_null.setBorder(new LineBorder(Color.BLACK, 1));
+			pnl_null.add(new JLabel("null"));
 
-			return nullPanel;
+			return pnl_null;
 		}
 
 		JPanel gridPanel = new JPanel();

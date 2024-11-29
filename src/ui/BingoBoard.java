@@ -17,9 +17,11 @@ public class BingoBoard extends JFrame {
 	private int[][] filledPattern;
 	private ArrayList<Integer> availableNumbers;
 
+	private JPanel pnl_board;
+
 	private Game game;
 	private History history;
-	private JLabel[][] boardCells;
+	private JLabel[][] lbl_boardCells;
 
 	public BingoBoard(Game game, History history) {
 		this.game = game;
@@ -27,7 +29,7 @@ public class BingoBoard extends JFrame {
 
 		this.board = new int[BOARD_SIZE][BOARD_SIZE];
 		this.filledPattern = new int[BOARD_SIZE][BOARD_SIZE];
-		this.boardCells = new JLabel[BOARD_SIZE][BOARD_SIZE];
+		this.lbl_boardCells = new JLabel[BOARD_SIZE][BOARD_SIZE];
 		this.availableNumbers = new ArrayList<>();
 
 		for (int i = 1; i <= MAX_NUMBER; i++) {
@@ -41,9 +43,9 @@ public class BingoBoard extends JFrame {
 		this.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		this.setLayout(new BorderLayout());
 
-		JPanel boardPanel = new JPanel(new GridLayout(BOARD_SIZE + 1, BOARD_SIZE));
-		this.initializeBoardGUI(boardPanel);
-		this.add(boardPanel, BorderLayout.CENTER);
+		this.pnl_board = new JPanel(new GridLayout(BOARD_SIZE + 1, BOARD_SIZE));
+		this.initializeBoardGUI(pnl_board);
+		this.add(pnl_board, BorderLayout.CENTER);
 
 		this.initializeButtonGUI();
 
@@ -57,9 +59,8 @@ public class BingoBoard extends JFrame {
 		for (int col = 0; col < BOARD_SIZE; ++col) {
 			numbers.clear();
 
-			for (int i = col * range + 1; i <= (col + 1) * range; ++i) {
+			for (int i = col * range + 1; i <= (col + 1) * range; ++i)
 				numbers.add(i);
-			}
 
 			Collections.shuffle(numbers);
 
@@ -75,52 +76,53 @@ public class BingoBoard extends JFrame {
 		}
 	}
 
-	private void initializeBoardGUI(JPanel boardPanel) {
+	private void initializeBoardGUI(JPanel pnl_board) {
 		String[] headers = {"B", "I", "N", "G", "O"};
+
 		for (String header : headers) {
-			JLabel lblHeader = new JLabel(header, SwingConstants.CENTER);
+			JLabel lbl_header = new JLabel(header, SwingConstants.CENTER);
 
-			lblHeader.setFont(new Font("Arial", Font.BOLD, 24));
-			lblHeader.setForeground(Color.WHITE);
-			lblHeader.setOpaque(true);
-			lblHeader.setBackground(MyColor.BLUE);
+			lbl_header.setFont(new Font("Arial", Font.BOLD, 24));
+			lbl_header.setForeground(Color.WHITE);
+			lbl_header.setOpaque(true);
+			lbl_header.setBackground(MyColor.BLUE);
 
-			boardPanel.add(lblHeader);
+			pnl_board.add(lbl_header);
 		}
 
 		for (int row = 0; row < BOARD_SIZE; ++row) {
 			for (int col = 0; col < BOARD_SIZE; ++col) {
-				JLabel cell = new JLabel();
+				JLabel lbl_cell = new JLabel();
 
-				cell.setHorizontalAlignment(SwingConstants.CENTER);
-				cell.setFont(new Font("Arial", Font.BOLD, 20));
-				cell.setBorder(BorderFactory.createLineBorder(Color.BLACK));
+				lbl_cell.setHorizontalAlignment(SwingConstants.CENTER);
+				lbl_cell.setFont(new Font("Arial", Font.BOLD, 20));
+				lbl_cell.setBorder(BorderFactory.createLineBorder(Color.BLACK));
 
 				if (board[row][col] == 0) {
-					cell.setText("FREE");
-					cell.setForeground(Color.WHITE);
-					cell.setBackground(MyColor.BLUE);
-					cell.setOpaque(true);
+					lbl_cell.setText("FREE");
+					lbl_cell.setForeground(Color.WHITE);
+					lbl_cell.setBackground(MyColor.BLUE);
+					lbl_cell.setOpaque(true);
 				} else {
-					cell.setText(String.valueOf(board[row][col]));
-					cell.setOpaque(true);
-					cell.setBackground(Color.WHITE);
+					lbl_cell.setText(String.valueOf(board[row][col]));
+					lbl_cell.setOpaque(true);
+					lbl_cell.setBackground(Color.WHITE);
 				}
 
-				boardCells[row][col] = cell;
-				boardPanel.add(cell);
+				lbl_boardCells[row][col] = lbl_cell;
+				pnl_board.add(lbl_cell);
 			}
 		}
 	}
 
 	private void initializeButtonGUI() {
-		JButton drawButton = new JButton("Draw Ball");
+		JButton btn_draw = new JButton("Draw Ball");
 
-		drawButton.setFont(new Font("Arial", Font.BOLD, 16));
-		drawButton.setBackground(MyColor.BLUE);
-		drawButton.setForeground(Color.WHITE);
+		btn_draw.setFont(new Font("Arial", Font.BOLD, 16));
+		btn_draw.setBackground(MyColor.BLUE);
+		btn_draw.setForeground(Color.WHITE);
 
-		drawButton.addActionListener(new ActionListener() {
+		btn_draw.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				if (availableNumbers.isEmpty()) {
@@ -140,18 +142,18 @@ public class BingoBoard extends JFrame {
 			}
 		});
 
-		this.add(drawButton, BorderLayout.SOUTH);
+		this.add(btn_draw, BorderLayout.SOUTH);
 	}
 
 	private void updateBoard(int number) {
 		for (int row = 0; row < BOARD_SIZE; row++) {
 			for (int col = 0; col < BOARD_SIZE; col++) {
 				if (board[row][col] == number) {
-					JLabel cell = boardCells[row][col];
+					JLabel lbl_cell = lbl_boardCells[row][col];
 
-					cell.setBackground(Color.YELLOW);
-					cell.setOpaque(true);
-					cell.repaint();
+					lbl_cell.setBackground(Color.YELLOW);
+					lbl_cell.setOpaque(true);
+					lbl_cell.repaint();
 
 					filledPattern[row][col] = 1;
 				}

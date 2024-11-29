@@ -56,10 +56,10 @@ public class SetupFrame extends JFrame {
 		lbl_side.setAlignmentX(Component.CENTER_ALIGNMENT);
 		pnl_options.add(lbl_side);
 
-		JButton button1 = new JButton("Start");
-		button1.setAlignmentX(Component.CENTER_ALIGNMENT);
+		JButton button = new JButton("Start");
+		button.setAlignmentX(Component.CENTER_ALIGNMENT);
 
-		button1.addActionListener(e -> {	
+		button.addActionListener(e -> {	
 			if (currentPattern == null || currentPattern.length == 0) {
 				JOptionPane.showMessageDialog(this, "Please select a valid pattern before starting the game.", "Error", JOptionPane.ERROR_MESSAGE);
 			} else {
@@ -68,16 +68,16 @@ public class SetupFrame extends JFrame {
 			}
 		});
 	
-		pnl_options.add(button1);
+		pnl_options.add(button);
 
 		JPanel pnl_placeholder = new JPanel();
 		pnl_placeholder.setPreferredSize(new Dimension(180, 300));
 		pnl_placeholder.setAlignmentX(Component.CENTER_ALIGNMENT);
 		pnl_options.add(pnl_placeholder);
 		
-		JLabel newLabel = new JLabel("Selected grid");
-		newLabel.setAlignmentX(Component.CENTER_ALIGNMENT);
-		pnl_options.add(newLabel);
+		JLabel lbl_selectGrid = new JLabel("Selected grid");
+		lbl_selectGrid.setAlignmentX(Component.CENTER_ALIGNMENT);
+		pnl_options.add(lbl_selectGrid);
 
 		JPanel pnl_preview = PatternGrid.createPatternGrid(null);
 		pnl_preview.setPreferredSize(new Dimension(180, 80));
@@ -89,6 +89,7 @@ public class SetupFrame extends JFrame {
 
 	public void updatePreview(int[][] pattern) {
 		JPanel pnl_preview = PatternGrid.createPatternGrid(pattern);
+
 		pnl_preview.setPreferredSize(new Dimension(180, 80));
 		pnl_preview.setAlignmentX(Component.CENTER_ALIGNMENT);
 		pnl_options.remove(4);
