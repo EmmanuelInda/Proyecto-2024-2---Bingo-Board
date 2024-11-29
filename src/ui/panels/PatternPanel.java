@@ -37,6 +37,7 @@ public class PatternPanel extends JPanel {
 			patternGrid.addMouseListener(new MouseAdapter() {
 				@Override
 				public void mouseClicked(MouseEvent e) {
+					parentFrame.setCurrentPattern(pattern);
 					parentFrame.updatePreview(pattern);
 				}
 			});

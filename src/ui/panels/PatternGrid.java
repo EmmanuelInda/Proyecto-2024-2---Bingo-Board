@@ -10,6 +10,7 @@ public class PatternGrid extends JPanel {
 	public static JPanel createPatternGrid(int[][] pattern) {
 		if (pattern == null) {
 			JPanel nullPanel = new JPanel();
+			
 			nullPanel.setBorder(new LineBorder(Color.BLACK, 1));
 			nullPanel.add(new JLabel("null"));
 
@@ -22,6 +23,7 @@ public class PatternGrid extends JPanel {
 		for (int[] row : pattern) {
 			for (int cell : row) {
 				JLabel cellLabel = new JLabel();
+
 				cellLabel.setOpaque(true);
 				cellLabel.setBackground(cell == 1 ? MyColor.BLUE : Color.WHITE);
 				cellLabel.setBorder(BorderFactory.createLineBorder(Color.BLACK));

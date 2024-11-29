@@ -1,5 +1,7 @@
 package ui;
 
+import game.Game;
+
 import ui.mycolors.MyColor;
 import ui.panels.PatternPanel;
 import ui.panels.PatternGrid;
@@ -11,6 +13,8 @@ public class SetupFrame extends JFrame {
 	JPanel pnl_header;
 	JPanel pnl_options;
 	JPanel pnl_patterns;
+
+	int currentPattern[][];
 
 	public SetupFrame() {
 		setTitle("Bingo (setup)");
@@ -54,6 +58,16 @@ public class SetupFrame extends JFrame {
 
 		JButton button1 = new JButton("Start");
 		button1.setAlignmentX(Component.CENTER_ALIGNMENT);
+
+		button1.addActionListener(e -> {	
+			if (currentPattern == null || currentPattern.length == 0) {
+				JOptionPane.showMessageDialog(this, "Please select a valid pattern before starting the game.", "Error", JOptionPane.ERROR_MESSAGE);
+			} else {
+				new BingoBoard(new Game(currentPattern), new History());
+				this.dispose();
+			}
+		});
+	
 		pnl_options.add(button1);
 
 		JPanel pnl_placeholder = new JPanel();
@@ -83,7 +97,12 @@ public class SetupFrame extends JFrame {
 		pnl_options.repaint();
 	}
 
+	public void setCurrentPattern(int[][] currentPattern) {
+		this.currentPattern = currentPattern;
+	}
+
 	private void setPatterns() {
+		currentPattern = null;
 		pnl_patterns = new PatternPanel(this);
 		add(pnl_patterns, BorderLayout.CENTER);
 	}
