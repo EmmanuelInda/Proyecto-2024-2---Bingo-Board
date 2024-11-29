@@ -3,9 +3,6 @@ package game.patterns;
 import java.util.ArrayList;
 
 public class Pattern {
-	public Pattern() {
-	}
-
 	public static ArrayList<int[][]> getFiveInARowPatterns() {
 		ArrayList<int[][]> patterns = new ArrayList<>();
 

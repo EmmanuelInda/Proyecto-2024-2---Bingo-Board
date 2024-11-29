@@ -1,16 +1,16 @@
 package ui;
 
 import ui.mycolors.MyColor;
-import ui.panels.PatternsPanel;
+import ui.panels.PatternPanel;
+import ui.panels.PatternGrid;
 
 import javax.swing.*;
 import java.awt.*;
-import javax.swing.event.ChangeEvent;
-import javax.swing.event.ChangeListener;
 
 public class SetupFrame extends JFrame {
-	JPanel headerPanel;
-	JPanel optionsPanel;
+	JPanel pnl_header;
+	JPanel pnl_options;
+	JPanel pnl_patterns;
 
 	public SetupFrame() {
 		setTitle("Bingo (setup)");
@@ -30,65 +30,61 @@ public class SetupFrame extends JFrame {
 	}
 
 	private void setHeader() {
-		headerPanel = new JPanel();
-		headerPanel.setBackground(MyColor.BLUE);
+		pnl_header = new JPanel();
+		pnl_header.setBackground(MyColor.BLUE);
 
-		JLabel headerLabel = new JLabel("Bingo");
-		headerLabel.setForeground(Color.WHITE);
-		headerLabel.setFont(new Font("Arial", Font.BOLD, 36));
-		headerPanel.add(headerLabel);
+		JLabel lbl_header = new JLabel("Bingo");
+		lbl_header.setForeground(Color.WHITE);
+		lbl_header.setFont(new Font("Arial", Font.BOLD, 36));
+		pnl_header.add(lbl_header);
 
-		add(headerPanel, BorderLayout.NORTH);
+		add(pnl_header, BorderLayout.NORTH);
 	}
 
 	private void setOptions() {
-		optionsPanel = new JPanel();
-		optionsPanel.setPreferredSize(new Dimension(200, 768));
-		optionsPanel.setLayout(new BoxLayout(optionsPanel, BoxLayout.Y_AXIS));
+		pnl_options = new JPanel();
+		pnl_options.setPreferredSize(new Dimension(200, 768));
+		pnl_options.setLayout(new BoxLayout(pnl_options, BoxLayout.Y_AXIS));
+		pnl_options.setBorder(BorderFactory.createEmptyBorder(10, 10, 10, 10));
 
-		JLabel sideLabel = new JLabel("Options");
-		sideLabel.setFont(new Font("Arial", Font.BOLD, 18));
-		sideLabel.setAlignmentX(Component.CENTER_ALIGNMENT);
-		optionsPanel.add(sideLabel);
+		JLabel lbl_side = new JLabel("Menu");
+		lbl_side.setFont(new Font("Arial", Font.BOLD, 18));
+		lbl_side.setAlignmentX(Component.CENTER_ALIGNMENT);
+		pnl_options.add(lbl_side);
 
-		JButton button1 = new JButton("Option 1");
+		JButton button1 = new JButton("Start");
 		button1.setAlignmentX(Component.CENTER_ALIGNMENT);
-		optionsPanel.add(button1);
+		pnl_options.add(button1);
 
-		JButton button2 = new JButton("Option 2");
-		button2.setAlignmentX(Component.CENTER_ALIGNMENT);
-		optionsPanel.add(button2);
+		JPanel pnl_placeholder = new JPanel();
+		pnl_placeholder.setPreferredSize(new Dimension(180, 300));
+		pnl_placeholder.setAlignmentX(Component.CENTER_ALIGNMENT);
+		pnl_options.add(pnl_placeholder);
+		
+		JLabel newLabel = new JLabel("Selected grid");
+		newLabel.setAlignmentX(Component.CENTER_ALIGNMENT);
+		pnl_options.add(newLabel);
 
-		JLabel sliderLabel = new JLabel("Range Selector:");
-		sliderLabel.setFont(new Font("Arial", Font.PLAIN, 14));
-		sliderLabel.setAlignmentX(Component.CENTER_ALIGNMENT);
-		optionsPanel.add(sliderLabel);
+		JPanel pnl_preview = PatternGrid.createPatternGrid(null);
+		pnl_preview.setPreferredSize(new Dimension(180, 80));
+		pnl_preview.setAlignmentX(Component.CENTER_ALIGNMENT);
+		pnl_options.add(pnl_preview);
 
-		JLabel sliderValueLabel = new JLabel("Selected Value: 40");
-		sliderValueLabel.setFont(new Font("Arial", Font.PLAIN, 14));
-		sliderValueLabel.setAlignmentX(Component.CENTER_ALIGNMENT);
-		optionsPanel.add(sliderValueLabel);
+		add(pnl_options, BorderLayout.WEST);
+	}
 
-		JSlider slider = new JSlider(5, 75, 40);
-		slider.setMajorTickSpacing(10);
-		slider.setMinorTickSpacing(5);
-		slider.setPaintTicks(true);
-		slider.setPaintLabels(true);
-		slider.setAlignmentX(Component.CENTER_ALIGNMENT);
-
-		slider.addChangeListener(new ChangeListener() {
-			@Override
-			public void stateChanged(ChangeEvent e) {
-				int value = slider.getValue();
-				sliderValueLabel.setText("Selected Value: " + value);
-			}
-		});
-		optionsPanel.add(slider);
-
-		add(optionsPanel, BorderLayout.WEST);
+	public void updatePreview(int[][] pattern) {
+		JPanel pnl_preview = PatternGrid.createPatternGrid(pattern);
+		pnl_preview.setPreferredSize(new Dimension(180, 80));
+		pnl_preview.setAlignmentX(Component.CENTER_ALIGNMENT);
+		pnl_options.remove(4);
+		pnl_options.add(pnl_preview, 4);
+		pnl_options.revalidate();
+		pnl_options.repaint();
 	}
 
 	private void setPatterns() {
-		add(new PatternsPanel(), BorderLayout.CENTER);
+		pnl_patterns = new PatternPanel(this);
+		add(pnl_patterns, BorderLayout.CENTER);
 	}
 }
